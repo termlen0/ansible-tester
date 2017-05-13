@@ -1,0 +1,22 @@
+---
+- name: SHOW VER TEST
+  gather_facts: no
+  connection: local
+  hosts: all
+
+  vars:
+    provider:
+      username: ntc
+      password: Aut0m@t1on
+      host: "{{ inventory_hostname }}"
+  tasks:
+
+    - name: SHOW VERSION FOR NXOS
+      nxos_command:
+        provider: "{{ provider }}"        
+        transport: cli
+        commands:
+          - show version
+      register: output
+
+    - debug: var=output
