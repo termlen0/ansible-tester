@@ -14,11 +14,11 @@ install:
 
 script:
   # Check the role/playbook's syntax.
-  - ansible-playbook -i inventory nxos1.yml --syntax-check
-  - ansible-playbook -i inventory nxos1.yml
+  - ansible-playbook -i inventory debug_demo.yml --syntax-check
+  - ansible-playbook -i inventory debug_demo.yml
   # Run the role/playbook again, checking to make sure it's idempotent.
   - >
-    ansible-playbook -i inventory nxos1.yml 
+    ansible-playbook -i inventory debug_demo.yml 
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)

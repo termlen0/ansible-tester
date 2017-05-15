@@ -1,0 +1,12 @@
+---
+- name: PRINT OUT THE INVENTORY HOSTS
+  gather_facts: no
+  connection: local
+  hosts: test-group
+
+  tasks:
+
+    - name: PRINT THE INVENTORY HOSTS
+      debug:
+        msg: "Hostname : {{ inventory_hostname }}"
+        
